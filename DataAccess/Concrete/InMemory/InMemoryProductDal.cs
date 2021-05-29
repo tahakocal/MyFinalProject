@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.InMemory
 {
-    class InMemoryProductDal
+    public class InMemoryProductDal
     {
     }
 }
