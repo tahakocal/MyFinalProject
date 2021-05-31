@@ -1,14 +1,11 @@
-﻿using System;
+﻿using DataAccess.Abstract;
+using Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccess.Abstract;
-using Entities.Concrete;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryProductDal:IProductDal
+    public class InMemoryProductDal : IProductDal
     {
         List<Product> _products;
 
@@ -34,7 +31,7 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public void Update(Product product)
-        {   
+        {
             //Gönderdiğim ürün id'sine sahip olan listedeki ürünü bul 
             Product productToUpdate = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
             productToUpdate.ProductName = product.ProductName;
@@ -46,7 +43,7 @@ namespace DataAccess.Concrete.InMemory
         public void Delete(Product product)
         {
             //LINQ
-            Product productToDelete = _products.SingleOrDefault(p=>p.ProductId==product.ProductId);
+            Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
 
             _products.Remove(productToDelete);
         }
