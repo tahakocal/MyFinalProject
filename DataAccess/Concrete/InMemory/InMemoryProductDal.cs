@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryProductDal:IProductDal
+    public class InMemoryProductDal : IProductDal
     {
         List<Product> _products;
 
@@ -28,13 +27,23 @@ namespace DataAccess.Concrete.InMemory
             return _products;
         }
 
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            
+        }
+
         public void Add(Product product)
         {
             _products.Add(product);
         }
 
         public void Update(Product product)
-        {   
+        {
             //Gönderdiğim ürün id'sine sahip olan listedeki ürünü bul 
             Product productToUpdate = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
             productToUpdate.ProductName = product.ProductName;
@@ -46,7 +55,7 @@ namespace DataAccess.Concrete.InMemory
         public void Delete(Product product)
         {
             //LINQ
-            Product productToDelete = _products.SingleOrDefault(p=>p.ProductId==product.ProductId);
+            Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
 
             _products.Remove(productToDelete);
         }
