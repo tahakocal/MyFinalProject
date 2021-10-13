@@ -11,7 +11,7 @@ namespace ConsoleUI
             ProductTest();
             //CategoryTest();  
 
-             
+
 
 
             Console.ReadLine();
@@ -53,7 +53,7 @@ namespace ConsoleUI
 
             foreach (var product in productManager.GetProductDetails())
             {
-                Console.WriteLine(product.ProductName+ "/" + product.ProductName);
+                Console.WriteLine(product.ProductName + "/" + product.ProductName);
             }
         }
     }
