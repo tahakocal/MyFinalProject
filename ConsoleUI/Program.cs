@@ -1,7 +1,6 @@
 ﻿using Business.Concrete;
-using DataAccess.Concrete.InMemory;
-using System;
 using DataAccess.Concrete.EntityFramework;
+using System;
 
 namespace ConsoleUI
 {
@@ -25,7 +24,7 @@ namespace ConsoleUI
 
             Console.WriteLine("**********************************************");
 
-            foreach (var product in productManager.GetByUnitPrice(100,5000))
+            foreach (var product in productManager.GetByUnitPrice(100, 5000))
             {
                 Console.WriteLine(product.ProductName);
             }
