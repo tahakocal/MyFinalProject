@@ -2,13 +2,12 @@
 {
     public class Result : IResult
     {
-
-
-        public Result(bool success, string message)
+        public Result(bool success, string message):this(success)
         {
             Message = message;
-            Success = success;
+            
         }
+
         public Result(bool success)
         {
             Success = success;
