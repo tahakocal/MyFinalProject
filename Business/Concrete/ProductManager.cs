@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using System;
+using Business.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,7 +21,13 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            return new DataResult(_productDal.GetAll());
+            if (DateTime.Now.Hour==20)
+            {
+                return new ErrorDataResult();
+                
+            }
+
+            return new DataResult<List<Product>>(_productDal.GetAll(),true,"Urunler Listelendi");
         }
 
         public List<Product> GetAllByCategoryId(int id)
