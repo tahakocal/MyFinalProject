@@ -18,9 +18,9 @@ namespace Business.Concrete
         }
 
 
-        public List<Product> GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
-            return _productDal.GetAll();
+            return new DataResult(_productDal.GetAll());
         }
 
         public List<Product> GetAllByCategoryId(int id)
