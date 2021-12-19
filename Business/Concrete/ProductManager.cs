@@ -4,6 +4,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System.Collections.Generic;
+using Business.Constants;
 
 namespace Business.Concrete
 {
@@ -44,8 +45,13 @@ namespace Business.Concrete
 
         public IResult Add(Product product)
         {
+            if (product.ProductName.Length<2)
+            {
+                return new ErrorResult(Messages.ProductNameInvalid);
+            }
+
             _productDal.Add(product);
-            return new Result(true, "Ürün Eklendi");
+            return new Result(true, Messages.ProductAdded);
         }
     }
 }
