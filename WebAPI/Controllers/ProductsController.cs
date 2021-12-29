@@ -1,13 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Business.Abstract;
+﻿using Business.Abstract;
 using Entities.Concrete;
-using Business.Concrete;
-using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebAPI.Controllers
 {
@@ -28,7 +22,7 @@ namespace WebAPI.Controllers
 
         public List<Product> Get()
         {
-           
+
             var result = _productService.GetAll();
             return result.Data;
         }
