@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using System;
+using Business.Abstract;
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -17,14 +18,15 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+     
 
         public IDataResult<List<Product>> GetAll()
         {
-            //if (DateTime.Now.Hour == 20)
-            //{
-            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            if (DateTime.Now.Hour == 17)
+            {
+                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
 
-            //}
+            }
 
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductListed);
         }
