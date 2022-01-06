@@ -1,10 +1,10 @@
-﻿using System;
-using Business.Abstract;
+﻿using Business.Abstract;
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using System;
 using System.Collections.Generic;
 
 namespace Business.Concrete
@@ -18,7 +18,7 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
-     
+
 
         public IDataResult<List<Product>> GetAll()
         {
