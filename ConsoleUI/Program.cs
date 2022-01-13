@@ -11,9 +11,6 @@ namespace ConsoleUI
             ProductTest();
             //CategoryTest();  
 
-
-
-
             Console.ReadLine();
         }
 
