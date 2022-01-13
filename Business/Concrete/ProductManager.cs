@@ -6,6 +6,8 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using Business.ValidationRules.FluentValidation;
+using FluentValidation;
 
 namespace Business.Concrete
 {
@@ -58,13 +60,12 @@ namespace Business.Concrete
 
         public IResult Add(Product product)
         {
-            if (product.UnitPrice <= 0)
+            var context = new ValidationContext<Product>(product);
+            ProductValidator productValidator = new ProductValidator();
+            var result = productValidator.Validate(context);
+            if (!result.IsValid)
             {
-                return new ErrorResult(Messages.UnitPriceInvalid);
-            }
-            if (product.ProductName.Length < 2)
-            {
-                return new ErrorResult(Messages.ProductNameInvalid);
+                throw new ValidationException(result.Errors);
             }
 
             _productDal.Add(product);
