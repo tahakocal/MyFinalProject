@@ -7,6 +7,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using FluentValidation;
 
 namespace Business.Concrete
@@ -57,16 +58,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
         }
-
+        
         public IResult Add(Product product)
         {
-            var context = new ValidationContext<Product>(product);
-            ProductValidator productValidator = new ProductValidator();
-            var result = productValidator.Validate(context);
-            if (!result.IsValid)
-            {
-                throw new ValidationException(result.Errors);
-            }
+           ValidationTool.Validate(new ProductValidator(),product);
 
             _productDal.Add(product);
             return new Result(true, Messages.ProductAdded);
