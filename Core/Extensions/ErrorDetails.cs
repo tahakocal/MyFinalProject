@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Core.Extensions
 {

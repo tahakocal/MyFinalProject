@@ -1,10 +1,9 @@
-﻿using System;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using FluentValidation;
-using FluentValidation.Results;
 
 namespace Core.Extensions
 {

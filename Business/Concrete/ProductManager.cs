@@ -20,10 +20,9 @@ namespace Business.Concrete
         IProductDal _productDal;
         ICategoryService _categoryService;
 
-        public ProductManager(IProductDal productDal, ICategoryService categoryService)
+        public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
-            _categoryService = categoryService;
         }
 
 
@@ -129,15 +128,13 @@ namespace Business.Concrete
         public IResult AddTransactionalTest(Product product)
         {
 
-            Add(product);
-            if (product.UnitPrice < 10)
-            {
-                throw new Exception("");
-            }
+        [ValidationAspect(typeof(ProductValidator))]
+        public IResult Add(Product product)
+        {
+           ValidationTool.Validate(new ProductValidator(),product);
 
-            Add(product);
-
-            return null;
+            _productDal.Add(product);
+            return new Result(true, Messages.ProductAdded);
         }
 
     }
